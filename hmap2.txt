@@ -1,0 +1,97 @@
+import java.util.*;
+public class Main{
+    public static void main(String args[]){
+        
+        HashMap<String,String> h1 =new HashMap<String,String>();
+        while(true){
+        System.out.println("Map Collections program:");
+        System.out.print("Choices:\n 1-For Insertion\n");
+        System.out.print("Choices:\n 2-For Updation\n");
+        System.out.print("Choices:\n 3-For Removal by key\n");
+        System.out.print("Choices:\n 4-For Removal by value\n");
+        System.out.print("Choices:\n 5-To display\n");
+        System.out.print("Choices:\n 6-For Exit\n");
+        System.out.print("Enter choice:");
+        Scanner ch=new Scanner(System.in);
+        int choice=ch.nextInt();
+        
+        
+        switch(choice){
+        case 1: 
+        System.out.println("Enter key:(A,B,C,D....)");
+        Scanner sc=new Scanner(System.in);
+        String key=sc.next();
+        System.out.println("Enter value:(String)");
+        String value=sc.next();
+        h1.put(key,value);
+        System.out.println("\nNew entry added \n");
+        break;
+        
+        case 2:
+        Scanner pc=new Scanner(System.in);
+        System.out.println("Enter key to update/insert : ");
+        String a=pc.next();
+        String value1;
+        if (h1.containsKey(a)){
+            System.out.println("\nKey found, Updation:");
+            System.out.println("\nEnter value to insert\n");
+            value1=pc.next();
+            h1.put(a,value1);
+        }
+        else{
+            System.out.println("\nEntry not found, Insertion:");
+            System.out.println("Enter key:(A,B,C,D....)");
+            String key2=pc.next();
+            System.out.println("Enter value:(String)");
+            String value2=pc.next();
+            h1.put(key2,value2);
+            System.out.println("\nNew entry added \n");
+        }
+        break;
+        
+        case 3:
+        System.out.println("\nEnter key to remove from map");
+        Scanner dc=new Scanner(System.in);
+        String a1=dc.next();
+        if (h1.containsKey(a1)){
+            h1.remove(a1);
+            System.out.println("\nEntry removed from map");
+            System.out.println(h1);
+        }
+        else{
+            System.out.println("\nEntry not found");
+            
+        }
+        break;
+        
+        case 4:
+        System.out.println("\nEnter value to remove from map");
+        Scanner ec=new Scanner(System.in);
+        String b1=ec.next();
+        if (h1.containsValue(b1)){
+            h1.remove(b1);
+            System.out.println("\nEntry removed from map");
+            System.out.println(h1);
+        }
+        else{
+            System.out.println("\nEntry not found");
+            
+        }
+        break;
+        
+        case 5:
+        System.out.println("\nIterating through hashmap \n");
+        Iterator<String>it1=h1.keySet().iterator();
+        Iterator<String>it2=h1.values().iterator();
+        while(it1.hasNext()){
+            System.out.println("Key : "+it1.next()+" "+"Value : "+it2.next());
+        }
+        break;
+        
+        case 6:
+            System.exit(0);
+        break;
+        }
+    }
+}
+}
