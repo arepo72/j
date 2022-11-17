@@ -1,0 +1,146 @@
+import java.util.*;
+public class hash{
+    public static void main(String args[]){
+        ArrayList<String>list1=new ArrayList<String>();
+        list1.add("python");
+        list1.add("maths");
+        list1.add("c");
+        
+        ArrayList<String>list2=new ArrayList<String>();
+        list2.add("c");
+        list2.add("c++");
+        
+        ArrayList<String>list3=new ArrayList<String>();
+        list3.add("c++");
+        list3.add("physics");
+        list3.add("chemistry");                                                                                                               
+        
+        
+        HashMap<String,ArrayList<String>> h1 =new HashMap<String,ArrayList<String>>();
+        h1.put("A",list1);
+        h1.put("B",list2);
+        h1.put("C",list3);
+        
+        HashMap<String,Integer>h2=new HashMap<String,Integer>();
+        h2.put("python",111);
+        h2.put("maths",222);
+        h2.put("c++",444);
+        h2.put("c",333);
+        h2.put("physics",555);
+        h2.put("chemistry",666);
+        h2.put("Digitalelectronics",777);
+        
+        System.out.println("Enter details to add to h1\n");
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter name of Student to add : ");
+        String s=sc.next();
+        
+        
+        String s2[]=new String[3];
+        System.out.println("Enter courses registered by Student : ");
+        for(int i=0;i<3;i++){
+            s2[i]=sc.next();
+        }
+        ArrayList<String>list4=new ArrayList<String>();
+        for(int i=0;i<3;i++){
+            list4.add(s2[i]);
+        }
+        
+        h1.put(s,list4);
+        System.out.println("\n New Student added \n");
+        
+        System.out.println("\nEnter Student name to remove from map h1");
+        Scanner pc=new Scanner(System.in);
+        System.out.println("Enter name of Student to remove : ");
+        String a=pc.next();
+        if (h1.containsKey(a)){
+            h1.remove(a);
+            System.out.println("\n Student removed from h1");
+            
+            System.out.println(h1);
+            
+            
+        }
+        else{
+            System.out.println("\n Student not found");
+        }
+        
+        System.out.println("\n Iterating through hashmap h1 \n");
+        Iterator<String>it1=h1.keySet().iterator();
+        Iterator<ArrayList<String>>it2=h1.values().iterator();
+        while(it1.hasNext()){
+            System.out.println("Student : "+it1.next()+""+"Courses : "+it2.next());
+            
+        }
+        
+        System.out.println("\n Iterating through hashmap h2 \n");
+        Iterator<String>it3=h2.keySet().iterator();
+        Iterator<Integer>it4=h2.values().iterator();
+        while(it3.hasNext()){
+            System.out.println("Courses : " + it3.next()+""+"Faculty : "+it4.next());
+            
+        }
+        
+        //given a student name , fetch thr teachers :
+        System.out.println("\nEnter Student name to search and find teachers : \n");
+        Scanner dc=new Scanner(System.in);
+        System.out.println("Enter name of Student to find : ");
+        String b=dc.next();
+        String p[]=new String[list1.size()];
+        String q[]=new String[list2.size()];
+        String r[]=new String[list3.size()];
+        String w[]=new String[list4.size()];
+        
+
+
+        if(h1.containsKey(b)){
+            if(b.equals("A")){
+                for(int i=0;i<list1.size();i++){
+                p[i]=list1.get(i);
+                }
+                for(int j=0;j<p.length;j++){
+                    if(h2.containsKey(p[j])){
+                        System.out.println("\n Teachers of this student"+b+"are :" );
+                        System.out.println(h2.get(p[j]));
+                    }
+                }
+            }
+            else if(b.equals("B")){
+                for(int i=0;i<list2.size();i++)
+                 q[i]=list2.get(i);
+                for(int j=0;j<q.length;j++){
+                    if(h2.containsKey(q[j])){
+                        System.out.println("\n Teachers of this student"+b+"are :" );
+                        System.out.println(h2.get(q[j]));
+                    }
+                }
+            }
+            else if(b.equals("C")){
+                for(int i=0;i<list3.size();i++)
+                 r[i]=list3.get(i);
+                for(int j=0;j<r.length;j++){
+                    if(h2.containsKey(r[j])){
+                        System.out.println("\n Teachers of this student "+b+" are :" );
+                        System.out.println(h2.get(r[j]));
+                    }
+                }
+            }
+            else{
+            
+                for(int i=0;i<list4.size();i++)
+                w[i]=list4.get(i);
+                for(int j=0;j<w.length;j++){
+                    if(h2.containsKey(w[j])){
+                        System.out.println("\n Teachers of this student"+b+"are :" );
+                        System.out.println(h2.get(w[j]));
+                    }
+                }
+            }
+        
+
+        }
+        else{
+            System.out.println("\n Student not found \n");
+        }          
+    }
+}
