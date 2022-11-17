@@ -1,0 +1,96 @@
+import java.lang.*;
+import java.util.*;
+class Student{
+	String regno;
+	String name;
+	String branch;
+	int year;
+	int semester;
+	int[] marks = new int[5];
+Student(){//user defined constructor
+	regno="ABCDEF";
+	name="Abcdef";
+	branch="ABCD";
+	year=0;
+	semester=0;
+	marks=new int[]{0,0,0,0,0};
+}
+};
+class driver{
+void read(Student s[],int i){
+	Scanner sc = new Scanner(System.in);
+	System.out.print("Name:");
+	s[i].name=sc.next();
+	System.out.println();
+	System.out.print("Reg no:");
+	s[i].regno=sc.next();
+	System.out.println();
+	System.out.print("Branch:");
+	s[i].branch=sc.next();
+	System.out.println();
+	System.out.print("Year:");
+	s[i].year=sc.nextInt();
+	System.out.println();
+	s[i].semester=sc.nextInt();
+	System.out.println();
+	System.out.println("Enter 5 subjects marks");
+	for(int j=0;j<5;j++){
+		System.out.print("For subject"+(j+1)+" :");
+		s[i].marks[j]=sc.nextInt();
+		System.out.println();
+		}
+	}
+float calc(Student s[],int j){
+	int sum=0;
+	float avg=0.0f;
+	for(int i=0;i<5;i++){	
+		sum=sum+s[0].marks[i];
+	}
+	avg=(float)sum/5;
+	System.out.println("Sum is:"+sum);
+	return avg;	
+}
+void display(Student s[],int i){
+System.out.println("Name of "+i+"st student"+s[i].name);
+}
+void search(Student s[],String key){
+     for(Student a:s){
+		if((a.name).equals(key)){
+            System.out.println("Found");
+        }
+        else{
+            System.out.println("Not Found");
+        }
+    }
+}
+}
+class clob{
+public static void main(String args[]){
+	Scanner sc= new Scanner(System.in);
+	System.out.print("Enter no. of Students:");
+	System.out.println();
+	int n = sc.nextInt();
+	Student s[] = new Student[n];
+	for(int i=0;i<n;i++){
+		driver d=new driver();
+		s[i]=new Student();
+		System.out.println("Enter Student "+(i+1)+" details:");
+		d.read(s,i);
+	}
+	for(int i=0;i<n;i++){
+		driver d =new driver();
+		System.out.println("Enter the student no. to calculate average");
+		int stu=sc.nextInt();
+		float avg[]=new float[n];
+		d.display(s,i);
+		for(int j=0;j<n;j++){
+			avg[j]=d.calc(s,j);
+			System.out.println("The avg of student "+j+"is:"+avg[j]);
+		}
+		System.out.println("The avg of student "+stu+"is:"+avg[stu]);
+		d.search(s,"ani");
+	}	
+}
+}
+
+
