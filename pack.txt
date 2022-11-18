@@ -1,0 +1,90 @@
+import Number.*;
+import java.util.Scanner;
+class driver{
+public static void main(String []args){
+numPack num=new numPack();
+Scanner sc=new Scanner(System.in);
+//Input
+System.out.println("Type: ax2+bx+c=0");
+System.out.println("Enter a:");
+double a=sc.nextDouble();
+System.out.println("Enter b:");
+double b=sc.nextDouble();
+System.out.println("Enter c:");
+double c=sc.nextDouble();
+//Calling numPack
+double root1,root2;
+double one,two,three,four,dis,rootdis;
+rootdis=0.0;
+one=num.Difference(0,b);
+two=num.Power(b,2);
+three=4*(num.Product(a,c));
+dis=num.Difference(two,three);
+if(dis<0){//complex root condition
+dis=num.Difference(three,two);
+rootdis=num.Sqrt(dis);
+one=num.Division(one,num.Product(2,a));
+two=num.Division(rootdis,num.Product(2,a));
+System.out.printf("The roots of the equation are: %.2f+-%.2fi\n",one,two);
+}
+else{
+root1=num.Division(num.Sum(one,rootdis),num.Product(2,a));
+root2=num.Division(num.Difference(one,rootdis),num.Product(2,a));
+//Output
+System.out.println("The Roots of the equation are: "+root1+", "+root2);
+}
+}
+}
+
+//numpack.java
+
+package Number;
+import java.lang.*;
+import java.util.Scanner;
+public class numPack
+{
+public double Sum(double n1,double n2)
+{
+double s;
+s=n1+n2;
+return s;
+}
+public double Difference(double n1,double n2)
+{
+double d;
+d=n1-n2;
+return d;
+}
+public double Product(double n1,double n2)
+{
+double p;
+p=n1*n2;
+return p;
+}
+public double Division(double n1,double n2)
+{
+double q;
+if(n2==0){
+System.out.println("Division by Zero error");
+q=0.0;
+}
+else{
+q=n1/n2;
+}
+return q;
+}
+public double Power(double n1,double n2)
+{
+double pw;
+pw=Math.pow(n1,n2);
+return pw;
+}
+public double Sqrt(double n1)
+{
+double sq;
+sq=Math.sqrt(n1);
+return sq;
+}
+}
+
+
