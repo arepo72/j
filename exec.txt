@@ -1,0 +1,95 @@
+import java.lang.*;
+import java.util.*;
+//InvalidEmployeeCode 
+class IdCheckException extends Exception
+{
+    IdCheckException(String s)
+    {
+    	super(s);
+    }
+}
+class Employee{
+    String name;
+    String id;
+    String yob;
+int checkId(String id,String yob)throws IdCheckException//earlier I'd put up only Exception(SInce it wasn't getting recognized, so I had to change);
+{
+    int count=0;
+    String sub1,sub2,sub3;
+    sub1=yob.substring(2);
+    String split[]=id.split("-");
+    if(sub1.equals(split[0]))
+    {
+        //System.out.println("Yob Correct");
+        if((split[1].contains("F"))||(split[1].contains("S")))
+        {
+            //System.out.println("Designation Correct");
+            if(split[2].length()==3)
+            {
+                //System.out.println("Length ok");
+                count++;
+                return count;
+            }
+            else
+            {
+            	throw new IdCheckException("Length not ok");
+                //System.out.println("Length not ok");
+            }
+        }
+        else
+        {
+                //System.out.println("Designation not Correct");
+		throw new IdCheckException("Designation does not exist");
+        }
+    }
+    else
+    {	
+        //System.out.println("Yob not Correct");
+        throw new IdCheckException("Incorrect year");
+    }
+    //return -1;   
+    // else
+    // {
+    //     //System.out.println("-1");
+    //     count--;
+    //     return count;
+    // }
+    
+}
+}
+class driver extends Employee
+{
+    public static void main(String args[])
+    {
+        String empname,empid,empyob;
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Employee Id: ");
+        empid = sc.next();
+        System.out.println("Enter Employee name: ");
+        empname = sc.next();
+        System.out.println("Enter Employee Year of birth: ");
+        empyob = sc.next();
+        Employee emp= new Employee();
+        emp.name=empname;
+        emp.id=empid;
+        emp.yob=empyob;
+        int i=0;
+        try
+      	{
+            i=emp.checkId(empid,empyob);
+        }
+        catch(IdCheckException e)
+        {
+         	System.out.println(e);   
+        }
+        finally
+        {
+        	if(i==1){
+                System.out.println("\"Employee Code Valid\"");
+            }
+        }
+    }
+}
+
+
+
