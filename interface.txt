@@ -1,0 +1,97 @@
+import java.lang.*;
+import java.util.Scanner;
+
+interface armstrong
+{
+//void input();
+bool armcheck();
+void display();
+}
+interface prime
+{
+bool primecheck();
+void display();
+}
+class number implements armstrong,prime
+{
+//void input(){
+int num;
+Scanner sc=new Scanner(System.in);
+num=sc.nextInt();
+//}
+bool armcheck(int num){
+	int digit,sum=0;
+	while(num!=0){
+	digit = num%10;
+	System.out.print(digit+" ");
+	num=num/10;
+	sum=sum+(digit*digit*digit);
+	}
+	if(sum==num){
+	System.out.println("True");
+	//return true;
+	}
+}
+bool primecheck(int num){
+        if(num<=1)
+        {
+            return false;
+        }
+        for(int i=2;i<=num/2;i++)
+        {
+           if((num%i)==0)
+               return  false;
+        }
+        return true;
+}
+void display();
+public static void main(String args){
+	number arma=new arma();
+	primecheck();
+	armcheck)();
+	if((primecheck)&&(armcheck)){
+	System.out.println("Prime armstrong");
+	}
+}
+}
+
+//2
+//Theory class on interfaces-6th sept 2022
+import java.lang.*;
+import java.util.Scanner;
+interface Number{
+    public int prime(int num);
+}
+interface Factor{
+    public void List_Factors();
+}
+class armstrong implements Number,Factor{
+    int num=0;
+    void printNumber(){
+        System.out.println("Prime nos. between 1 to 100 are:");
+        for(int i=0;i<100;i++){
+            num=prime(i);
+            if(num==1){
+                System.out.print(i+" ");
+            }
+        }
+    }
+    public int prime(int num){
+        int flag=0;
+        if(num<=1){
+            flag =-1;
+        }
+        for(int i=2;i<=num/2;i++){
+            if((num%i)==0)
+                flag =-1;
+        }
+        flag=1;
+        return flag;
+    }
+    public void List_Factors(){
+    }
+public static void main(String []args){
+    armstrong arm=new armstrong();
+    arm.printNumber();
+} 
+}
