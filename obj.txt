@@ -1,0 +1,35 @@
+import java.lang.*;
+import java.io.*;
+class Student implements Serializable //Serializable is a marker
+{
+String name;
+String regno;
+Student()
+{
+}
+Student(String n,String r)//parameterized constructor
+{
+name=n;
+regno=r;
+}
+void display()
+{
+System.out.println(name+" "+regno);
+}
+public static void main(String args[])throws IOException,ClassNotFoundException //or any general exception
+{
+FileOutputStream fp=new FileOutputStream("stud.txt"); 
+ObjectOutputStream op=new ObjectOutputStream(fp);
+Student s=new Student("hari","234");
+op.writeObject(s);
+op.close();
+fp.close();
+}
+ObjectInputStream op=new ObjectInputStream(new FileInputStream("stud.txt"));
+Student s1=new Student();
+Student s=(Student)op.readObject();
+//don't need to use the display() function in readObject/InputStream
+//open the file now and see.. writeObject stores the data in a human unreadable format(objects can't be read directly from a txt file)
+//however since the previous file output stream stored direcly in the form of bytes and notepad was a bytereader, we could see what was written
+//here also it is written in the form of bytes but it is written as objects.
+}
